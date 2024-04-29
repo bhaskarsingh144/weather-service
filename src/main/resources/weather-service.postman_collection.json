@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "48b6ff4c-bbda-45cc-8cc4-901a7d5a1dae",
+		"name": "weather-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27917421"
+	},
+	"item": [
+		{
+			"name": "fetch-weather-by-pincode-date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pincode",
+							"value": "560060",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2020-10-15",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/weather/weather-for-date-pincode",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"weather-for-date-pincode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch-all-saved-weather-info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "date",
+							"value": "2020-10-15",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/weather/all-weather",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"all-weather"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "geocoding-google-api",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://maps.googleapis.com/maps/api/geocode/json?address=226016&key=AIzaSyCNy_rx3eHdS4TmBeNE3P1BmMsbipK37ic",
+					"protocol": "https",
+					"host": [
+						"maps",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"maps",
+						"api",
+						"geocode",
+						"json"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "226016"
+						},
+						{
+							"key": "key",
+							"value": "AIzaSyCNy_rx3eHdS4TmBeNE3P1BmMsbipK37ic"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "open-weather-location-based-api",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=39.099724&lon=-94.578331&dt=1643803200&appid=c36b559b0a02b139a81abbf918c183cc",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"onecall",
+						"timemachine"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "39.099724"
+						},
+						{
+							"key": "lon",
+							"value": "-94.578331"
+						},
+						{
+							"key": "dt",
+							"value": "1643803200"
+						},
+						{
+							"key": "appid",
+							"value": "c36b559b0a02b139a81abbf918c183cc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
