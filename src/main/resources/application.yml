@@ -1,0 +1,19 @@
+spring.application.name: weather-service
+
+
+google.maps.api.key: AIzaSyCNy_rx3eHdS4TmBeNE3P1BmMsbipK37ic
+open.weather.api.key: c36b559b0a02b139a81abbf918c183cc
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/weather
+    username: root
+    password: ''
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
