@@ -12,6 +12,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +45,9 @@ class GeoCodingServiceImpl implements GeoCodingService {
     private GeocodeResponse callGoogleGeoCodingAPI(String pincode) {
         String uriString = "https://maps.googleapis.com/maps/api/geocode/json";
         URI uri = URI.create(uriString);
-        Map<String, String> params = Map.of("address", pincode, "key", googleMapsApiKey);
+        byte[] bytes = Base64.getDecoder().decode(googleMapsApiKey);
+        String key = new String(bytes, StandardCharsets.UTF_8);
+        Map<String, String> params = Map.of("address", pincode, "key", key);
         return restService.callApi(uri, HttpMethod.GET, HttpHeaders.EMPTY, params, null,
                 ParameterizedTypeReference.forType(GeocodeResponse.class));
     }

@@ -13,12 +13,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -65,12 +63,14 @@ public class WeatherServiceImpl implements WeatherService {
         log.info("Calling OpenWeatherAPI");
         String uriString = "https://api.openweathermap.org/data/3.0/onecall/timemachine";
         URI uri = URI.create(uriString);
+        byte[] bytes = Base64.getDecoder().decode(openWeatherApiKey);
+        String key = new String(bytes, StandardCharsets.UTF_8);
 
         Map<String, ?> params = Map.of(
                 "lat", latitude,
                 "lon", longitude,
                 "dt", dt,
-                "appid", openWeatherApiKey
+                "appid", key
         );
         return restService.callApi(
                 uri,

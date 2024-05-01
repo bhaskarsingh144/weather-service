@@ -1,8 +1,8 @@
 spring.application.name: weather-service
 
 
-google.maps.api.key: AIzaSyCNy_rx3eHdS4TmBeNE3P1BmMsbipK37ic
-open.weather.api.key: c36b559b0a02b139a81abbf918c183cc
+google.maps.api.key: QUl6YVN5Q055X3J4M2VIZFM0VG1CZU5FM1AxQm1Nc2JpcEszN2lj
+open.weather.api.key: YzM2YjU1OWIwYTAyYjEzOWE4MWFiYmY5MThjMTgzY2M=
 
 spring:
   datasource:
