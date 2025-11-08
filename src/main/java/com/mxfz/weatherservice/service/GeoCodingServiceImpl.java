@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Service
 @Slf4j
-class GeoCodingServiceImpl implements GeoCodingService {
+public class GeoCodingServiceImpl implements GeoCodingService {
 
     private final PincodeService pincodeService;
     private final RestService restService;

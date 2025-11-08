@@ -25,6 +25,7 @@ public class RestServiceImpl implements RestService {
         this.restClient = restClient;
     }
 
+    @Override
     public <T> T callApi(URI endpoint,
                          HttpMethod method,
                          HttpHeaders requestHeaders,

@@ -1,20 +1,17 @@
 package com.mxfz.weatherservice.model.weather;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "weather_info")
 @Data
+@Document(collection = "weather_info")
 public class WeatherInfo {
 
     @Id

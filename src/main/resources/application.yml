@@ -1,19 +1,19 @@
 spring.application.name: weather-service
 
-
 google.maps.api.key: QUl6YVN5Q055X3J4M2VIZFM0VG1CZU5FM1AxQm1Nc2JpcEszN2lj
 open.weather.api.key: YzM2YjU1OWIwYTAyYjEzOWE4MWFiYmY5MThjMTgzY2M=
 
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/weather
-    username: root
-    password: ''
-  #    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-#        dialect: org.hibernate.dialect.MySQLDialect
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: weather
+
+# Executor Configuration for Multi-threading
+executor:
+  core-pool-size: 5          # Minimum number of threads to keep alive
+  max-pool-size: 10          # Maximum number of threads in the pool
+  queue-capacity: 100       # Maximum number of tasks waiting in the queue
+  keep-alive-seconds: 60    # Time to keep idle threads alive
+  thread-name-prefix: weather-service-  # Prefix for thread names
