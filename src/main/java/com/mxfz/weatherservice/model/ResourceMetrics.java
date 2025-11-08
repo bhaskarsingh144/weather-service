@@ -43,11 +43,6 @@ public class ResourceMetrics {
     private long systemMemoryTotal;
     private double systemMemoryUsagePercentage;
     
-    // Kafka Consumer Metrics (if applicable)
-    private Long kafkaConsumerLag;
-    private Integer kafkaActiveConsumers;
-    private Double kafkaConsumerThroughput;
-    
     // Application-specific metrics
     private Integer activeRequests;
     private Integer queuedTasks;

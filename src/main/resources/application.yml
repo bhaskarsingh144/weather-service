@@ -9,11 +9,56 @@ spring:
       host: localhost
       port: 27017
       database: weather
+  
+  # Web Server Configuration (Tomcat)
+  threads:
+    virtual:
+      enabled: true  # Enable virtual threads for Tomcat (Java 21)
+    # If virtual threads disabled, use these settings:
+    # tomcat:
+    #   threads:
+    #     max: 200      # Max threads for HTTP requests
+    #     min-spare: 10 # Min idle threads
 
-# Executor Configuration for Multi-threading
+# Executor Configuration for Multi-threading (Java 21 with Virtual Threads)
 executor:
-  core-pool-size: 5          # Minimum number of threads to keep alive
-  max-pool-size: 10          # Maximum number of threads in the pool
-  queue-capacity: 100       # Maximum number of tasks waiting in the queue
-  keep-alive-seconds: 60    # Time to keep idle threads alive
+  use-virtual-threads: true  # Use Java 21 virtual threads (Project Loom) - perfect for I/O-bound tasks
+  core-pool-size: 5          # Minimum number of threads (only used if virtual threads disabled)
+  max-pool-size: 10          # Maximum number of threads (only used if virtual threads disabled)
+  queue-capacity: 100       # Maximum number of tasks waiting in the queue (only used if virtual threads disabled)
+  keep-alive-seconds: 60    # Time to keep idle threads alive (only used if virtual threads disabled)
   thread-name-prefix: weather-service-  # Prefix for thread names
+
+# Resource Monitoring and Prediction Configuration
+resource:
+  monitor:
+    enabled: true            # Enable resource monitoring
+  
+  # Prediction Thresholds
+  prediction:
+    # Heap Memory Thresholds (%)
+    heap:
+      warning: 70.0          # Warning when heap usage exceeds this
+      critical: 85.0         # Critical when heap usage exceeds this
+      imminent: 95.0        # Imminent crash risk when heap usage exceeds this
+    
+    # CPU Thresholds (%)
+    cpu:
+      warning: 70.0         # Warning when CPU usage exceeds this
+      critical: 85.0        # Critical when CPU usage exceeds this
+    
+    # Thread Count Thresholds
+    thread:
+      warning: 80           # Warning when thread count exceeds this
+      critical: 90          # Critical when thread count exceeds this
+    
+    # GC Duration Thresholds (milliseconds)
+    gc:
+      duration:
+        warning: 1000       # Warning when GC duration exceeds this
+        critical: 5000     # Critical when GC duration exceeds this
+    
+    # Thread Pool Queue Thresholds
+    queue:
+      warning: 50           # Warning when queue size exceeds this
+      critical: 80         # Critical when queue size exceeds this
